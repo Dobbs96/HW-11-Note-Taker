@@ -31,6 +31,8 @@ fs.readFile("db/db.json", (err, data) => {
     update();
   });
 
+  // PUT
+  app.put("/api/notes/:id", (req, res) => {});
   // DELETE
   app.delete("/api/notes/:id", (req, res) => {
     //   deletes first not target
@@ -39,7 +41,7 @@ fs.readFile("db/db.json", (err, data) => {
     update();
   });
   const update = () => {
-    fs.writeFile("db/db.json", JSON.stringify(notes, "\t"), (err) => {
+    fs.writeFile("db/db.json", JSON.stringify(notes), (err) => {
       if (err) throw err;
       return true;
     });
