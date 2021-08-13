@@ -1,7 +1,6 @@
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
-const { notDeepEqual } = require("assert");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,10 +17,6 @@ app.get("/notes", (req, res) =>
   res.sendFile(path.join(`${__dirname}/public`, "notes.html"))
 );
 
-// fs.readFile("db/db.json", (err, data) => {
-//   if (err) throw err;
-//   const notes = JSON.parse(data);
-// });
 let notes;
 app.get("/api/notes", (req, res) => {
   read();
@@ -35,10 +30,6 @@ app.get("/api/notes/:id", (req, res) => {
   return chosenID;
 });
 
-// let newID;
-// for (let i = 0; i < notes.length; i++) {
-//   newID = { id: i };
-// }
 // POST
 let addedID;
 let newNote;
@@ -56,7 +47,6 @@ app.put("/api/notes/:id", (req, res) => {});
 
 // DELETE
 app.delete("/api/notes/:id", (req, res) => {
-  //   deletes first not target
   reRead();
   notes.splice(req.params.id, 1);
   res.redirect("/");
