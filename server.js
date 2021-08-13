@@ -30,6 +30,9 @@ app.get("/api/notes", (req, res) => {
 
 app.get("/api/notes/:id", (req, res) => {
   const getID = req.params.id;
+  reRead();
+  const chosenID = res.json(notes[getID]);
+  return chosenID;
 });
 
 // let newID;
